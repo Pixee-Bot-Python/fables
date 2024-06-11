@@ -29,9 +29,10 @@ def _parse_user_input(
     io: Union[str, IO[bytes], None],
     calling_func_name: str,
     password: Optional[str] = None,
-    passwords: Optional[Dict[str, str]] = {},
+    passwords: Optional[Dict[str, str]] = None,
     stream_file_name: Optional[str] = None,
 ) -> Tuple[Optional[str], Optional[IO[bytes]], Dict[str, str]]:
+    passwords = {} if passwords is None else passwords
     if isinstance(io, str):
         stream = None
         name = io
